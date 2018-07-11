@@ -1,0 +1,63 @@
+{template 'header'}
+<div class="m">
+	<div class="buy-main clearfix" style="margin-top: 10px;">
+		<div class="m_l_1 f_l">
+			<div class="left_box">
+				<div class="pos">当前位置: <a href="{DT_PATH}">首页</a>
+				&raquo; <a href="{$MOD[linkurl]}">{$MOD[name]}</a>
+				{if $typeid!=99}&raquo; <a href="{$MOD[linkurl]}{rewrite('index.php?typeid='.$typeid)}">{$TYPE[$typeid]}</a>{/if}
+				{if $catid}&raquo; {cat_pos($CAT, ' &raquo; ')}{/if}
+				</div>
+				<div class="category">
+					<p><strong>按行业浏览</strong></p>
+					<div>
+					<ul class="clearfix">
+					{loop $maincat $v}
+					<li class="category-item {if $v[catid]==$catid} f_b{/if}"><a href="{$MOD[linkurl]}{$v[linkurl]}">{set_style($v[catname],$v[style])}</a>{if !$cityid} <span class="f_gray px10">({$v[item]})</span>{/if}</li>
+				
+					{/loop}
+					</ul>
+					</div>
+				</div>
+				<div class="category">
+					<p><strong>按地区浏览</strong></p>
+					<div>
+					<ul class="clearfix">
+					{php $mainarea = get_mainarea(0)}
+					{loop $mainarea $v}
+					<li class="city-item"><a href="{$MOD[linkurl]}search.php?areaid={$v[areaid]}&typeid={$typeid}" rel="nofollow">{$v[areaname]}</a></li>
+					{/loop}
+					</ul>
+					</div>
+				</div>
+				</div>
+				<div class="b10">&nbsp;</div>
+				<!-- <div class="type">
+				<a href="{$MOD[linkurl]}" class="{if $typeid==99}type_1{else}type_2{/if}">最新采购</a>
+				{loop $TYPE $k $v}
+				<a href="javascript:Go('{$MOD[linkurl]}{rewrite('index.php?typeid='.$k.'&catid='.$catid)}');" class="{if $typeid==$k}type_1{else}type_2{/if}">{$v}</a>
+				{/loop}
+				</div> -->
+				
+				<div class="box_head">
+					<!-- <span class="f_r"><a href="{$MODULE[16][linkurl]}" rel="nofollow" class="g">更多»</a></span> -->
+					<strong>最新采购</strong>
+				</div>
+				<div class="buy-list">
+				<div class="img_tip" id="img_tip" style="display:none;">&nbsp;</div>
+				{if $page == 1}{ad($moduleid,0,'',6)}{/if}		<!--{tag("moduleid=$moduleid&condition=status=3$dtype&catid=$catid&areaid=$cityid&pagesize=".$MOD[pagesize]."&page=$page&showpage=1&datetype=5&order=".$MOD[order]."&fields=".$MOD[fields]."&lazy=$lazy&template=list-buy")}-->
+				</div>
+			</div>
+		<div class="m_r_1 f_r">
+			<div class="sponsor">{ad($moduleid,$catid,$kw,7)}</div>
+			<div class="box_head"><div><strong>本周搜索排行</strong></div></div>
+			<div class="box_body">
+				<div class="rank_list">
+					<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and updatetime>$today_endtime-86400*7&pagesize=10&order=week_search desc&key=week_search&template=list-search_rank")}-->
+				</div>		
+			</div>
+		
+		</div>
+	</div>
+</div>
+{template 'footer'}

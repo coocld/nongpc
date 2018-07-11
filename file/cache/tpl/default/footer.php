@@ -1,0 +1,98 @@
+<?php defined('IN_DESTOON') or exit('Access Denied');?><?php if($moduleid==1) { ?>
+<div class="friend-link"><span class="tit">友情链接：</span><!-- <a href="/link.html" target="_blank" class="more">更多</a> -->
+    <ul class="list clearfix">
+      <li><a target="_blank" title="花卉网" href="http://www.aihuhua.com/">花卉网</a></li>
+    </ul>
+</div>
+<?php } ?>
+<div class="footer">
+  <div class="container">
+    <div class="quick-nav">
+      <ul class="icon clearfix">
+        <li class="i1"><img src="/skin/default/image/quick-nav-icon-1.gif" alt="资源多">
+          <p><span>资源多</span><span>海量信息免费发</span></p>
+        </li>
+        <li class="i2"><img src="/skin/default/image/quick-nav-icon-2.gif" alt="优惠大">
+          <p><span>优惠大</span><span>挑战市场超低价</span></p>
+        </li>
+        <li class="i3"><img src="/skin/default/image/quick-nav-icon-3.gif" alt="销售广">
+          <p><span>销售广</span><span>采购便捷一站式</span></p>
+        </li>
+        <li class="i4"><img src="/skin/default/image/quick-nav-icon-4.gif" alt="更安全">
+          <p><span>更安全</span><span>实名认证更安心</span></p>
+        </li>
+      </ul>
+      <div class="list clearfix">
+        <dl class="clearfix">
+          <dt>新手指南</dt>
+          <dd><a href="# " target="_blank" rel="nofollow">注册新用户</a></dd>
+          <dd><a href="#" target="_blank" rel="nofollow">实名认证</a></dd>
+          <dd><a href="#" target="_blank" rel="nofollow">找回密码</a></dd>
+        </dl>
+        <dl class="clearfix">
+          <dt>采购商服务</dt>
+          <dd><a href="/sell/" target="_blank">找供应</a></dd>
+          <dd><a href="/member/my.php?mid=5&action=add" target="_blank" rel="nofollow">发布采购</a></dd>
+        </dl>
+        <dl class="clearfix">
+          <dt>供应商服务</dt>
+          <dd><a href="/buy/" target="_blank">找采购</a></dd>
+          <dd><a href="/member/my.php?mid=6&action=add" target="_blank" rel="nofollow">发布供应</a></dd>
+        </dl>
+        <dl class="clearfix">
+          <dt>交易安全</dt>
+          <dd><a href="#" target="_blank" rel="nofollow">卖家防骗</a></dd>
+          <dd><a href="#" target="_blank">营销推广</a></dd>
+          <dd><a href="#" target="_blank" rel="nofollow">买家防骗</a></dd>
+        </dl>
+      </div>
+    </div>
+    <div class="ptb20 clearfix">
+      <div class="foot-qr clearfix">
+        <div class="qrcode"><img src="/skin/default/image/topbar-hn-app.gif" alt="手机正农网">
+          <p><span>扫一扫</span><span>手机访问</span></p>
+        </div>
+        <div class="qrcode"><img src="/skin/default/image/topbar-qrcode.gif" alt="农贸官方微信">
+          <p><span>扫码关注</span><span>正农网官方微信</span></p>
+        </div>
+      </div>
+      <ul class="foot-nav clearfix">
+        <li><a href="/about/index.html" target="_blank" rel="nofollow">关于我们</a></li>
+        <li><a href="/help/legal.html" target="_blank" rel="nofollow">法律声明</a></li>
+        <li><a href="/help/agreement.html" target="_blank" rel="nofollow">使用协议</a></li>
+        <li><a href="/help/privacy.html" target="_blank" rel="nofollow">版权隐私</a></li>
+        <li><a href="/link.html" target="_blank" rel="nofollow">友情链接</a></li>
+        <li><a href="/help/case.html" target="_blank" rel="nofollow">成功案例</a></li>
+        <li><a href="/help/major.html" target="_blank" rel="nofollow">农贸大事记</a></li>
+        <li><a href="/chanpinku.html" target="_blank">产品库</a></li>
+        <li><a href="/pinzhongku.html" target="_blank">品种库</a></li>
+        <li><a href="/sitemap.html" target="_blank">网站地图</a></li>
+      </ul>
+      <div class="copyright">
+        <p>豫ICP备18023704号  | 联系电话：177-0396-5476</p>
+        <p>互联网药品信息服务资格证书:(豫)-经营性-2018-0001 正阳县正农科技服务有限公司  <a href="/skin/default/image/zhizhao.jpg" target="_blank">营业执照号</a></p>
+        <p>©2017-2018 Cnnma B2B SYSTEM All Rights Reserved</p>
+        <p class="imgs">
+        <a target="_blank" href="http://www.miitbeian.gov.cn/" rel="nofollow"><img alt="47" src="/skin/default/image/jhd_47.png"></a>
+        <a target="_blank" href="javascript:;" rel="nofollow"><img alt="55" src="/skin/default/image/jhd_55.png"></a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="back2top"><a href="javascript:void(0);" title="返回顶部">&nbsp;</a></div>
+<script type="text/javascript">
+<?php if($destoon_task) { ?>
+show_task('<?php echo $destoon_task;?>');
+<?php } else { ?>
+<?php include DT_ROOT.'/api/task.inc.php';?>
+<?php } ?>
+<?php if($lazy) { ?>$(function(){$("img").lazyload();});<?php } ?>
+<?php if($moduleid!=1) { ?>
+  $(".menu li.market").hover(function(){
+     $(".menu .topl").toggle();
+  });
+<?php } ?>
+</script>
+</body>
+</html>

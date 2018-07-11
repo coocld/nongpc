@@ -1,0 +1,14 @@
+<ul class="tuin-list">
+{loop $tags $i $t}
+<li class="tuin-item">
+<a href="{$t[linkurl]}"{if $target} target="{$target}"{/if} class="tuin-link">
+  <img class="tuin-img" src="{$t[thumb]}" alt="{$t[alt]}"/>
+</a>
+<div class="tuin-text">
+  <a href="{$t[linkurl]}" class="tuin-title">{$t[alt]}</a>
+  <a href="{$t[linkurl]}" class="tuin-desc">{$t[introduce]}</a>
+</div>
+</li>
+{/loop}
+</ul>
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

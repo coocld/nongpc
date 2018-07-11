@@ -1,0 +1,6 @@
+{loop $tags $t}
+<a href="{$t[linkurl]}" class="new-item">
+    <h4 class="d-t">{$t[title]}</h4>
+    <p class="d-c">{dsubstr($t[introduce], 105, '...')} </p>
+</a>
+{/loop}

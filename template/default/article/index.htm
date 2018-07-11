@@ -1,0 +1,85 @@
+{template 'header'}
+<div class="m" style="margin-top: 10px;">
+		<div class="news-top clearfix">
+			<div class="news-slide">
+				{if $MOD[page_islide]}
+					<!--{tag("moduleid=$moduleid&condition=status=3 and level=2 and thumb!=''&areaid=$cityid&order=".$MOD[order]."&pagesize=".$MOD[page_islide]."&width=710&height=370&target=_blank&template=slide")}-->
+				{/if}
+			</div>
+			<div class="news-toutiao">
+				<!-- <div class="headline">
+				{tag("moduleid=$moduleid&condition=status=3 and level=5&areaid=$cityid&order=".$MOD[order]."&pagesize=1&target=_blank&template=list-hl")}
+				</div> -->
+				<div class="subline">
+				<!--{tag("moduleid=$moduleid&condition=status=3 and level=1&areaid=$cityid&order=".$MOD[order]."&pagesize=3&datetype=2&target=_blank&template=list-newtop")}-->
+				<a href="/news/list.php?catid=189" target="_blank" class="sublinebtn">更多</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="b10"></div>
+		<div class="news_cont clearfix">
+			<div class="news_left">
+				<div class="news_box1">
+					<!--{php $tags=tag("table=quote_product&condition=1&areaid=$cityid&pagesize=7&order=edittime desc&length=16&template=null");}-->
+					
+					{if $tags}
+					<div class="box_head"><span class="f_r"><a href="/quote/product.php">更多&raquo;</a></span><strong>推荐行情</strong></div>
+					<div class="box_body">
+					<div id="quoteup">
+					<table cellpadding="0" cellspacing="0" width="100%">
+					{loop $tags $t}
+					<tr bgcolor="#FFFFFF" align="center">
+					<td width="140">{$t[title]}</td>
+					<td width="290">{$t[price]}{$DT[money_unit]}/{$t[unit]}</td>
+					<td width="260">{date('Y-m-d', $t[addtime])} </td>
+					
+					</tr>
+					{/loop}
+					</table>
+					</div>
+					</div>
+					{/if}
+				</div>
+				<div class="b10 c_b"> </div>
+				<div class="news_box3">
+					<div class="box_head"><span class="f_r"><a href="/news/list.php?catid=189">更多&raquo;</a></span><strong>致富故事</strong></div>
+					<div class="gushi_li"><!--{tag("moduleid=$moduleid&catid=189&condition=status=3&areaid=$cityid&order=".$MOD[order]."&pagesize=4&datetype=2&target=_blank&template=list-gushi")}--></div>
+				</div>
+				<div class="b10 c_b"> </div>
+				<div class="news_box5"><!--推荐图文-->
+					<div class="box_head"><div><strong>猜你喜欢</strong></div></div>
+					<div class="tuin-box"><!--{tag("moduleid=$moduleid&length=20&condition=status=3 and level=3 and thumb<>''&areaid=$cityid&pagesize=".$MOD[page_irecimg]."&order=".$MOD[order]."&width=120&height=90&cols=2&target=_blank&template=thumb-table")}--></div>
+		<div class="b10 c_b"> </div>
+				</div>
+			</div>
+			<div class="news_right">
+				<div class="news_box2">
+					<div class="box_head"><span class="f_r"><a href="/quote/">更多&raquo;</a></span><strong>行情资讯</strong></div>
+			<div class="box_body li_dot f_gray"><!--{tag("moduleid=7&areaid=$cityid&condition=status=3&order=".$MOD[order]."&pagesize=9&datetype=2&target=_blank")}--></div>
+				</div>
+				<div class="b10 c_b"> </div>
+				<div class="news_box4">
+					<div class="box_head"><span class="f_r"><a href="/news/list.php?catid=188">更多&raquo;</a></span><strong>三农政策</strong></div>
+			<div class="box_body li_dot f_gray" style="height: 357px;overflow: hidden;"><!--{tag("moduleid=$moduleid&catid=188&condition=status=3&areaid=$cityid&order=".$MOD[order]."&pagesize=12&datetype=2&target=_blank")}--></div>
+				</div>
+				<div class="b10 c_b"> </div>
+				<div class="news_box6">
+					<div class="box_head"><span class="f_r"><a href="/news/list.php?catid=4129">更多&raquo;</a></span><strong>三农知识</strong></div>
+			<div class="box_body"><!--{tag("moduleid=$moduleid&catid=4129&condition=status=3&areaid=$cityid&order=".$MOD[order]."&pagesize=".$MOD[page_icat]."&datetype=2&target=_blank&template=list-newtop")}--></div>
+				</div>
+			</div>
+		</div>
+	
+</div>
+<script type="text/javascript">
+	$(function(){
+
+		$(".gushi-item").hover(function(){
+		    $(this).find(".gushi-item-info").stop().animate({height:'80px'});
+		},function(){
+		    $(this).find(".gushi-item-info").stop().animate({height:'30px'});
+		});
+	})
+</script>
+{template 'footer'}

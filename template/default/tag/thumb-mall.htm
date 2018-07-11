@@ -1,0 +1,12 @@
+
+{loop $tags $i $t}
+<a href="{$t[linkurl]}"{if $target} target="{$target}"{/if} class="mall-right">
+    <div>
+        <img src="{str_replace('.thumb.'.file_ext($t[thumb]), '',$t[thumb])}" width="{$width}" height="{$height}" alt="{$t[alt]}"/>
+    </div>
+    <div class="price">¥ {$t[price]}/{$t[unit]}</div>
+    <div class="text">{$t[title]}</div>
+    
+</a>
+{/loop}
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

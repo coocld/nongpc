@@ -1,0 +1,87 @@
+{template 'header'}
+<div class="m">
+	<div class="quoteup-mail clearfix" style="margin-top: 15px;">
+		<div class="m_l f_l">
+			
+				<!--{php $tags=tag("table=quote_product&condition=1&areaid=$cityid&pagesize=20&order=edittime desc&length=16&template=null");}-->
+				{if $tags}
+				<!-- <div class="box_head"><span class="f_r"><a href="{$MOD[linkurl]}product.php">更多&raquo;</a></span><strong>产品报价</strong></div> -->
+				<table cellpadding="0" cellspacing="0" width="100%" bgcolor="#eee" class="hand_title">
+				<tr bgcolor="#eee">
+				<th width="140">产品名称</th>
+				<th width="290">价格</th>
+				<th width="260">报价时间</th>
+				<th width="188"><a href="{$MOD[linkurl]}product.php">查看更多&raquo;</a></th>
+				</tr>
+				</table>
+				<div id="quoteup">
+				<table cellpadding="0" cellspacing="0" width="100%">
+				{loop $tags $t}
+				<tr bgcolor="#FFFFFF" align="center">
+				<td width="140">{$t[title]}</td>
+				<td width="290">{$t[price]}{$DT[money_unit]}/{$t[unit]}</td>
+				<td width="260">{date('Y-m-d', $t[addtime])} </td>
+				<td width="188"><a href="{$MOD[linkurl]}{rewrite('price.php?itemid='.$t['itemid'])}" target="_blank" title="{$t[alt]}" class="b">行情走势</a></td>
+				</tr>
+				{/loop}
+				</table>
+				</div>
+				{/if}
+				
+			
+				<!-- <div class="headline">
+				{tag("moduleid=$moduleid&condition=status=3 and level=5&areaid=$cityid&order=".$MOD[order]."&pagesize=1&template=list-hl")}
+				{tag("moduleid=$moduleid&condition=status=3 and level=4&areaid=$cityid&pagesize=2&order=".$MOD[order]."&template=list-hlr&cols=2&target=_blank")}
+				</div>
+				<div class="b5"></div>
+				<div class="subline">
+				{tag("moduleid=$moduleid&condition=status=3 and level=1&areaid=$cityid&order=".$MOD[order]."&pagesize=5&datetype=2&target=_blank")}
+				</div>	 -->
+		
+			
+		</div>
+		<div class="m_r f_r" style="margin-top: -10px;">
+			{if $MOD[page_icat]}
+			<table cellpadding="0" cellspacing="0" width="100%">
+			{loop $maincat $i $c}
+			<tr>
+			<td valign="top" width="430">
+				<div class="b10"></div>
+				<div class="box_head"><span class="f_r"><a href="{$MOD[linkurl]}{$c[linkurl]}">更多&raquo;</a></span><strong>{$c[catname]}</strong></div>
+				<div class="box_body li_dot f_gray"><!--{tag("moduleid=$moduleid&catid=".$c[catid]."&areaid=$cityid&condition=status=3&order=".$MOD[order]."&pagesize=".$MOD[page_icat]."&datetype=2&target=_blank")}--></div>			
+			</td>
+			</tr>
+			{/loop}
+			</table>
+			{/if}
+			<div class="b10 c_b"> </div>
+			<div class="box_head"><div><strong>本周关注排行</strong></div></div>
+			<div class="box_body">
+				<div class="rank_list">
+					<!--{tag("moduleid=$moduleid&table=keyword&condition=moduleid=$moduleid and status=3 and updatetime>$today_endtime-86400*7&pagesize=10&order=week_search desc&key=week_search&template=list-search_rank")}-->
+				</div>
+			</div>
+			<!-- <div class="b10 c_b"> </div>
+			<div class="box_head"><div><strong>按分类浏览</strong></div></div>
+			<div class="box_body">
+			<table width="100%" cellpadding="3">
+			{loop $maincat $k $v}
+			{if $k%2==0}<tr>{/if}
+			<td><a href="{$MOD[linkurl]}{$v[linkurl]}">{set_style($v[catname],$v[style])}</a>{if !$cityid} <span class="f_gray px10">({$v[item]})</span>{/if}</td>
+			{if $k%2==1}</tr>{/if}
+			{/loop}
+			</table>
+			</div> -->
+			<div class="b10 c_b">&nbsp;</div>
+			<div class="box_head"><div><strong>点击排行</strong></div></div>
+			<div class="box_body">
+			<div class="rank_list"><!--{tag("moduleid=$moduleid&condition=status=3 and addtime>$today_endtime-30*86400&areaid=$cityid&order=hits desc&pagesize=10")}--></div>
+			</div>
+		</div>
+	</div>
+</div>
+{load('marquee.js')}
+<!-- <script type="text/javascript">
+new dmarquee(22, 20, 1000, 'quoteup');
+</script> -->
+{template 'footer'}

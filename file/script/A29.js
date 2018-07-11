@@ -1,0 +1,1 @@
+document.write('<a href="http://192.168.13.117/api/redirect.php?aid=24" target="_blank"><img src="http://127.0.0.1/file/upload/201801/11/143849201.jpg" width="166" height="134" alt=""/></a>');

@@ -1,0 +1,10 @@
+{loop $tags $t}
+<li class="purch-item">
+    <span class="row1">{$t[adddate]}</span>
+    <span class="row2">{$t[title]}</span>
+    <span class="row6">{$t[amount]}</span>
+    <span class="row3">{area_pos($t[areaid], '/', 2)}</span>
+    <span class="row4">{$t[truename]}</span>
+    <span class="row5"><a href="{$t[linkurl]}" class="purch-btn">查看详情</a></span>
+</li>
+{/loop}

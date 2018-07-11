@@ -1,0 +1,22 @@
+<ul class="company-list clearfix">
+    {loop $tags $t}
+    <li class="company-item">
+        <a href="{$t[linkurl]}" class="company-link">
+            <div class="com-photo">
+                <img src="{$t[thumb]}">
+            </div>
+            <div class="company-mc">
+                <div class="com-name">{$t[company]}</div>
+                <div class="com-adress"><span class="orange">所在地址：</span>{area_pos($t[areaid], '/', 2)}</div>
+                <div class="com-sell"><span class="orange">主营产品：</span>{$t[business]}</div>
+                <div class="com-tag">
+                    <span class="tag tag-phone"></span>
+                </div>
+            </div>
+            
+        </a>
+    </li>
+    {/loop}
+
+</ul>
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

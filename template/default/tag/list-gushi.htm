@@ -1,0 +1,13 @@
+<ul class="gushi-list clearfix">
+{loop $tags $i $t}
+<li class="gushi-item">
+  <a href="{$t[linkurl]}" class="gushi-item-link">
+    <div class="gushi-item-photo"><img class="gushi-item-img" src="{$t[thumb]}" alt="{$t[alt]}"></div>
+    <div class="gushi-item-info">
+      <h3 class="gushi-item-title">{$t[title]}</h3>
+      <p class="gushi-item-desc">{$t[introduce]}</p>
+    </div>
+  </a>
+</li>
+{/loop}
+</ul>

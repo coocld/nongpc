@@ -1,0 +1,1 @@
+document.write('<a href="http://192.168.13.117/api/redirect.php?aid=23" target="_blank"><img src="http://127.0.0.1/file/upload/201801/11/142740281.jpg" width="166" height="134" alt="粮油米面"/></a>');

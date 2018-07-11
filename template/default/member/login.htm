@@ -1,0 +1,281 @@
+{template 'header'}
+<style>
+	.login-main-left{
+		width: 600px;
+	    margin-top: 65px;
+	    padding-left: 35px;
+	    float: left;
+	}
+	.login-main-right{
+		width: 390px;
+	    height: auto;
+	    border: solid 1px #caccce;
+	    margin-top: 50px;
+	    margin-right: 100px;
+	    margin-bottom: 100px;
+	    padding-bottom: 35px;
+	    float: left;
+	}
+	.tab-head {
+	    width: 100%;
+	    height: 56px;
+	    border-bottom: solid 1px #e7eaeb;
+	}
+	.tab-head a {
+	    display: inline-block;
+	    float: left;
+	    width: 50%;
+	    text-align: center;
+	    line-height: 56px;
+	    font-size: 18px;
+	    position: relative;
+	}
+	.tab-head a.on {
+	    color: #ff9900;
+	}
+	.tab-head a.on:after {
+	    display: inline-block;
+	    width: 120px;
+	    height: 0px;
+	    border-bottom: solid 2px #ff9900;
+	    content: "";
+	    position: absolute;
+	    left: 50%;
+	    margin-left: -60px;
+	    bottom: -1px;
+	    z-index: 1;
+	}
+	.login-input {
+	    margin-top: 20px;
+	    width: 350px;
+	    height: 40px;
+	    margin-left: auto;
+	    margin-right: auto;
+	    position: relative;
+	}
+	.login-btn-box{
+		margin-top: 20px;
+	    width: 350px;
+	    margin-left: auto;
+	    margin-right: auto;
+	}
+
+	.login-input input {
+	    width: 340px;
+	    padding: 8px 4px;
+	    font-size: 16px;
+	    border: solid 1px #caccce;
+	    outline: none;
+	    text-indent: 5px;
+	}
+	input.login-btn {
+	    width: 100%;
+	    font-size: 16px;
+	    color: #fff;
+	    padding: 10px 0px;
+	    background: #ff500b;
+	    border: none;
+	    border-radius: 4px;
+	    outline: none;
+	    cursor: pointer;
+	    border: none;
+	}
+	input#username {
+	    background: url({DT_SKIN}image/user.jpg) 8px center no-repeat;
+	    text-indent: 30px;
+	}
+	input#password {
+		background: url({DT_SKIN}image/locked.jpg) 8px center no-repeat;
+		text-indent: 30px;
+	}
+	#cookietime{
+		height: 16px;
+		width: 16px;
+	}
+	#goto{
+		display: none;
+	}
+	.plab {
+	    padding: 5px 0;
+	    font-size: 16px;
+
+	}
+	a.reg-left{
+		float: left;
+		color: #666666;
+	}
+	a.reg-right{
+		float: right;
+		color: #666666;
+	}
+	.bod {
+		width: 350px;
+	    text-align: center;
+	    font-size: 16px;
+	    color: #666;
+	    position: relative;
+	    margin-top: 20px;
+	    margin-right: auto;
+	    margin-left: auto;
+	}
+	.bod:before {
+	    content: "";
+	    display: inline-block;
+	    border-bottom: solid 1px #dee1e2;
+	    position: absolute;
+	    height: 0px;
+	    width: 90px;
+	    left: 0;
+	    top: 10px;
+	}
+	.bod:after {
+	    content: "";
+	    display: inline-block;
+	    border-bottom: solid 1px #dee1e2;
+	    position: absolute;
+	    height: 0px;
+	    width: 90px;
+	    right: 0;
+	    top: 10px;
+	}
+	.login-abox {
+	    text-align: center;
+	    margin-top: 15px;
+	}
+	.login-abox a {
+	    padding: 5px;
+	}
+	.login-input .yzm {
+	    text-indent: 0px;
+	    font-size: 16px;
+	    height: 27px;
+	    width: auto;
+	    border: none;
+	    padding: 0px 4px;
+	    position: absolute;
+	    right: 6px;
+	    top: 6px;
+	    color: #fff;
+	}
+	.disable {
+	    background: #d9d9d9 !important;
+	}
+	.login-away{
+		display: none;
+	}
+</style>
+<div class="m">
+	<div class="login-main clearfix">
+		<div class="login-main-left fl">
+			<img src="{DT_SKIN}image/loginpic.jpg">
+		</div>
+		<div class="login-main-right fr">
+			<div class="tab-head">
+                <a href="javascript:void(0);" class="tab-btn on">密码登录</a>
+                <!-- <a href="javascript:void(0);" class="tab-btn">手机快速登录</a> -->
+            </div>
+            <div class="login-away" style="display: block;">
+				<form method="post" action="{$DT[file_login]}" onsubmit="return Dcheck();">
+					<input name="forward" type="hidden" value="{$forward}"/>
+	        		<input name="auth" type="hidden" value="{$auth}"/>
+	        		<div class="login-input">
+						<input name="username" type="text" id="username" onkeyup="this.value=this.value.replace(/^ +| +$/g,'')" value="{$username}" placeholder="手机号/用户名" />
+					</div>
+					<div class="login-input">
+						{template 'password', 'chip'}
+					</div>
+
+
+					{if $MOD[captcha_login]}
+						<div class="login-input">
+							{template 'captcha', 'chip'}
+						</div>
+					{/if}
+
+					<div class="plab" style="padding: 5px 20px;">
+					<input type="checkbox" name="cookietime" value="1" id="cookietime"{if $MOD[login_remember]} checked{/if}/><label for="cookietime">&nbsp;下次自动登陆</label>
+					</div>
+					<input type="checkbox" name="goto" value="0" id="goto"{if $MOD[login_goto]} checked{/if}/>
+
+					<div class="login-btn-box">
+						<input type="submit" name="submit" class="login-btn" value=" 登 录 "/>
+						<p class="plab clearfix">
+							<a class="reg-left" href="{$DT[file_register]}?forward={urlencode($forward)}">用户免费注册</a>
+							<a class="reg-right" href="send.php">忘记了密码？</a>
+						</p>
+					</div>
+				</form>
+			</div>
+			<div class="login-away">
+                <div class="login-input">
+                    <input type="text" class="username" name="mobile" id="mobile" maxlength="11" placeholder="请输入手机号" autocomplete="off" phptag="phptag_pc_fastlogin_number">
+                    <div id="mobile-error" class="errorWrapper" style="display: none;">
+                        <label class="error" id="mobilev">请输入13/14/15/17/18开头的11位数字</label>
+                    </div>
+                </div>
+                <div class="login-input other">
+                    <input type="text" name="phoneCode" id="phoneCode" maxlength="4" class="code" phptag="phptag_pc_reg_inputcode" placeholder="请输入验证码">
+                    <input type="button" class="yzm disable" id="button-phone" value="获取验证码" disabled="disabled">
+                    <div id="phoneCode-error" class="errorWrapper" style="display: none;">
+                        <label class="error" id="phoneCodev">请输入验正确证码</label>
+                    </div>
+                </div>
+                <div class="login-input">
+                	<input type="hidden" id="ftype" value="1">
+                    <input type="button" class="sibmit login-btn" phptag="phptag_pc_fastlogin_button" id="fastLogin" value="同意并登录">
+                </div>
+            </div>
+            {if $oa}
+				<div class="bod">
+	                可使用以下账户登录
+	            </div>
+	            <div class="login-abox">
+	                {loop $OAUTH $k $v}
+					{if $v[enable]}
+						<a href="{DT_PATH}api/oauth/{$k}/connect.php" title="{$v[name]}"><img src="{DT_PATH}api/oauth/{$k}/ico.png" alt="{$v[name]}"/></a>
+					{/if}
+					{/loop}
+	            </div>
+
+			{/if}
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+if(Dd('username').value == '') {
+	Dd('username').focus();
+} else {
+	Dd('password').focus();
+}
+function Dcheck() {
+	if(Dd('username').value == '') {
+		confirm('请输入登录名称');
+		Dd('username').focus();
+		return false;
+	}
+	if(Dd('password').value == '') {
+		confirm('请输入密码');
+		Dd('password').focus();
+		return false;
+	}
+{if $MOD[captcha_login]}
+	if(!is_captcha(Dd('captcha').value)) {
+		confirm('请填写验证码');
+		Dd('captcha').focus();
+		return false;
+	}
+{/if}
+	return true;
+}
+
+$(function(){
+	$(".tab-btn").click(function () {
+		var inx = $(this).index();
+		$(".tab-btn").removeClass('on').eq(inx).addClass('on');
+		$(".login-away").hide().eq(inx).show();
+	})
+})
+
+</script>
+{template 'footer'}

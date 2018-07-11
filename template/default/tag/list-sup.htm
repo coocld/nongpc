@@ -1,0 +1,16 @@
+<ul class="supper-list clearfix">
+    {loop $tags $t}
+    <li class="supper-item">
+        <a href="{$t[linkurl]}" class="supper-link">
+            <div class="photo"><img src="{str_replace('.thumb.'.file_ext($t[thumb]), '',$t[thumb])}"></div>
+            <div class="supper-info">
+                <div class="price orange clearfix"><span class="f_l">¥ {$t[price]}/{$t[unit]}</span><span class="f_r">已售{$t[sales]}{$t[unit]}</span></div>
+                <div class="proname">{$t[title]}</div>
+                <div class="uname">{$t[truename]}</div>
+                <div class="addres clearfix"><span class="f_l">{area_pos($t[areaid], '/', 2)}</span><span class="f_r">{$t[adddate]}</span></div>
+            </div>
+        </a>
+    </li>
+    {/loop}
+</ul>
+{if $showpage && $pages}<div class="pages">{$pages}</div>{/if}

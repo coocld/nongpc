@@ -1,0 +1,1 @@
+document.write('<a href="#" target="_blank"><img src="http://127.0.0.1/file/upload/201801/11/144124711.jpg" width="166" height="134" alt=""/></a>');

@@ -1,0 +1,28 @@
+/*
+	[Destoon B2B System] Copyright (c) 2008-2015 www.destoon.com
+	This is NOT a freeware, use is subject to license.txt
+*/
+.city-item{
+    display: inline-block;
+    float: left;
+    width: 98px;
+    height: 24px;
+    line-height: 24px;
+    color: #666;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+.category-item{
+    display: inline-block;
+    float: left;
+    width: 105px;
+    height: 24px;
+    line-height: 24px;
+    color: #666;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+.buy-list{
+  border: #DDDDDD 1px solid;
+  border-top:none;
+}

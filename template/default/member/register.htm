@@ -1,0 +1,330 @@
+{template 'header'}
+<style type="text/css">
+.reg_left{
+	width: 600px;
+    margin-top: 15px;
+    padding-left: 35px;
+    float: left;
+}
+.reg_right{
+	width: 515px;
+    height: 300px;
+    text-align: center;
+    padding-top: 80px;
+    margin-top: 40px;
+    border-left: solid 1px #eeeeee;
+    background: url({DT_SKIN}image/logbg.jpg) center top no-repeat;
+    float: right;
+}
+.register {
+    width: 435px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.box-border {
+    border: solid 1px #dddddd;
+    line-height: 23px;
+    height: 23px;
+    padding: 15px;
+    margin-top: 30px;
+    position: relative;
+}
+.box-border label {
+    font-size: 18px;
+}
+.box-border label.lt8{
+	display: inline-block;
+    width: 110px;
+    vertical-align: middle;
+    overflow: hidden;
+}
+.box-border input {
+    width: 265px;
+    font-size: 16px;
+    border: none;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    padding-left: 10px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.box-border label.lt2{
+	display: inline-block;
+    width: 110px;
+    vertical-align: middle;
+    overflow: hidden;
+}
+.box-border input#mobilecode {
+    background: #fff;
+}
+.box-border .yzm{
+    border: none;
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    height: 41px;
+    padding: 0px 10px;
+    font-size: 18px;
+    font-family: "microsoft yahei", Tahoma, Arial, \5FAE\8F6F\96C5\9ED1, \5B8B\4F;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background: #ff500b;
+}
+.box-border input.yzm {
+    width: auto;
+    font-size: 18px;
+    padding: 0px 10px;
+}
+.register input.submit {
+    width: 436px;
+    height: 46px;
+    line-height: 46px;
+    margin-top: 30px;
+    background: #ff500b;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    color: #fff;
+    outline: none;
+    cursor: pointer;
+    font-family: "microsoft yahei", Tahoma, Arial, \5FAE\8F6F\96C5\9ED1, \5B8B\4F;
+}
+.agreement {
+    text-align: center;
+    margin: 15px auto 50px auto;
+}
+.agreement a {
+    font-size: 16px;
+    color: #4dafea;
+}
+.lt8 {
+    letter-spacing: 8px;
+}
+.lt2 {
+    letter-spacing: 2px;
+}
+.box-border .disable {
+    background: #d9d9d9 !important;
+}
+.errorWrapper {
+    position: absolute;
+    top: -24px;
+    left: 115px;
+    z-index: 999;
+    display: none;
+}
+.errorWrapper label {
+    background: #fdf3eb;
+    border: 1px solid #f00;
+    border-radius: 3px;
+    color: #f00;
+    display: block;
+    font-size: 12px;
+    line-height: 1.4;
+    padding: 5px 10px;
+    z-index: 999;
+}
+.errorWrapper label:after {
+    background-attachment: scroll;
+    background: url({DT_SKIN}image/error-wrapper-down.png) no-repeat scroll 0 0;
+    bottom: -8px;
+    content: " ";
+    height: 16px;
+    position: absolute;
+    left: 18px;
+    width: 16px;
+}
+.reg_right h3 {
+    padding-top: 20px;
+    font-size: 16px;
+    margin-left: -35px;
+    font-weight: normal;
+}
+.reg_right b {
+    display: block;
+    border-bottom: solid 1px #eee;
+    height: 0px;
+    font-size: 0px;
+    width: 180px;
+    margin: 35px auto;
+    margin-left: 150px;
+}
+.login-abox {
+    margin-left: -35px;
+    margin-top: 30px;
+}
+.login-abox a {
+    padding: 0px 5px;
+}
+.reg_right p {
+    margin-top: 15px;
+    margin-left: -35px;
+    font-size: 18px;
+    line-height: 30px;
+}
+.reg_right p a {
+    color: #4dafea;
+}
+</style>
+
+
+<div class="m">
+	<div class="reg_main clearfix">
+		<div class="reg_left">
+			<iframe src="" name="send" id="send" style="display:none;"></iframe>
+			<form action="{$DT[file_register]}" method="post" target="send" onsubmit="return check();">
+				<input name="action" type="hidden" id="action" value="{crypt_action('register')}"/>
+				<input name="forward" type="hidden" value="{$forward}"/>
+				<input type="hidden" name="post[regid]" value="6" id="g_6"/>
+				<div class="register">
+	                <div class="box-border">
+	                    <label class="lt8">手机号码</label>
+	                    <input type="text" class="reg_inp" name="post[mobile]" id="mobile" onblur="validator('mobile');"/>
+						<input type="hidden" class="reg_inp" name="post[username]" id="username" autocomplete="off" />
+	                    <div id="mobile-error" class="errorWrapper left115">
+	                        <label class="error">请输入13/14/15/17/18开头的11位数字</label>
+	                    </div>
+	                </div>
+	                <div class="box-border other">
+	                    <label class="lt2">短信验证码</label>
+	                    <input type="text" class="reg_inp" name="post[mobilecode]" id="mobilecode" onblur="validator('mobilecode');"/>
+	                    <input type="button" class="yzm" value="立即发送" id="send_scode" onclick="SendSCode();"/>
+	                    <div id="mobilecode-error" class="errorWrapper left115">
+	                        <label class="error">请输入13/14/15/17/18开头的11位数字</label>
+	                    </div>
+	                </div>
+	                <div class="box-border">
+	                    <label class="lt8">登录密码</label>
+	                    <input type="password" class="reg_inp" name="post[password]" id="password" onblur="validator('password');" autocomplete="off" />
+	                    <div id="password-error" class="errorWrapper left115">
+	                        <label class="error">密码为6~16位数字、字母或符号,字母区分大小写</label>
+	                    </div>
+	                </div>
+
+	                <input type="submit" class="submit" name="submit" value="立即注册" />
+
+	                <p class="agreement">
+	                	<a href="?read=1" target="_blank" class="b">我已阅读并同意服务条款</a>
+	                </p>
+
+				</div>
+			</form>
+		</div>
+		<div class="reg_right">
+			<h3>可以使用以下方式直接登录</h3>
+			<b></b>
+			<div class="login-abox">
+	            <a href="/api/oauth/wechat/connect.php" title="微信"><img src="/api/oauth/wechat/ico.png" alt="微信"></a>
+	        </div>
+	        <p>   已经注册过？ <br>请点击<a href="{$DT[file_login]}?forward={urlencode($forward)}" id="goLogin" target="_self">直接登录</a></p>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="{DT_STATIC}file/script/guest.js"></script>
+<script type="text/javascript">
+// if(Dd('username').value == '') Dd('username').focus();
+{if $MOD[question_register]}Dd('answer').className = 'reg_inp';{/if}
+{if $MOD[captcha_register]}Dd('captcha').className = 'reg_inp';{/if}
+
+var vid = '';
+function dtrim(id) {
+	var str = Dd(id).value.trim();
+	if(Dd(id).value != str) Dd(id).value = str;
+}
+function validator(id) {
+	vid = id;
+	dtrim(id);
+	makeRequest('moduleid={$moduleid}&action=member&job='+id+'&value='+Dd(id).value, AJPath, '_validator');
+}
+function _validator() {
+	if(xmlHttp.readyState==4 && xmlHttp.status==200) {
+		if(xmlHttp.responseText){
+			if(xmlHttp.responseText == '&nbsp;'){
+				$("#"+vid+"-error .error").text('验证码错误');
+			}else{
+				$("#"+vid+"-error .error").text(xmlHttp.responseText);
+			}
+
+			$("#"+vid+"-error").show()
+		}else{
+			$("#"+vid+"-error").hide()
+		}
+
+	}
+}
+
+
+function reg(type) {
+	if(type) {
+		Ds('company_detail');
+	} else {
+		Dh('company_detail');
+	}
+}
+
+function check() {
+	$("#username").val($("#mobile").val());
+	if(Dd('password').value.length < 6) {
+		$("#password-error .error").text('请填写会员登录密码').show();
+		return false;
+	}
+	return true;
+}
+
+
+function SendSCode() {
+
+	makeRequest('action={$action_sendscode}&value='+Dd('mobile').value, '{$DT[file_register]}', '_SendSCode');
+
+	Dd('send_scode').value = '正在发送';
+}
+function _SendSCode() {
+	var f = 'mobile';
+	if(xmlHttp.readyState==4 && xmlHttp.status==200) {
+		Dd('send_scode').value = xmlHttp.responseText == 1 ? '发送成功' : '立即发送';
+		Dd('send_scode').disabled = xmlHttp.responseText == 1 ? true : false;
+		if(xmlHttp.responseText == 1) {
+			// Ds('sendsok');
+			// Dd('dsendsok').innerHTML = '<img src="{DT_STATIC}{$MODULE[2][moduledir]}/image/ico_mailok.gif" align="absmiddle"/> <span class="f_green">短信发送成功</span>';
+			StopSCode();
+			Dd('send_scode').disabled = true;
+			$("#send_scode").addClass('disable');
+		} else if(xmlHttp.responseText == 2) {
+			$("#mobile-error .error").text('手机号码格式错误，请检查');
+			$("#mobile-error").show()
+		} else if(xmlHttp.responseText == 3) {
+			$("#mobile-error .error").text('手机号码已存在，请更换');
+			$("#mobile-error").show()
+		} else if(xmlHttp.responseText == 5) {
+			$("#mobilecode-error .error").text('短信发送过快，请稍后再试');
+			$("#mobilecode-error").show()
+		} else if(xmlHttp.responseText == 6) {
+			$("#mobilecode-error .error").text('尝试发送次数太多，请稍后再试');
+			$("#mobilecode-error").show()
+		} else {
+			$("#mobilecode-error .error").text('网络异常，请稍后再试');
+			$("#mobilecode-error").show()
+		}
+	}
+}
+function StopSCode() {
+	Dd('send_scode').disabled = true;
+	var i = 60;
+	var interval=window.setInterval(
+		function() {
+			if(i == 0) {
+				Dd('send_scode').value = '立即发送';
+				Dd('send_scode').disabled = false;
+				clearInterval(interval);
+			} else {
+				Dd('send_scode').value = '重新发送('+i+')';
+				i--;
+			}
+		},
+	1000);
+}
+</script>
+{template 'footer'}
